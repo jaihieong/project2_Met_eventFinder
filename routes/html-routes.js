@@ -17,18 +17,18 @@ module.exports = function(app) {
         
         //Route to see welcome page
         app.get("/", function(req, res) {
-            res.sendFile(path.join(__dirname, "../views/welcome.html"));
+            res.render("welcome");
         })
 
         //Route to see the sign up page
          app.get("/register", function(req, res) {
-             res.sendFile(path.join(__dirname, "../views/register.html"));
+            res.render("register");
             
          });
 
         //Route to see log in page
          app.get("/login", function(req, res) {
-             res.sendFile(path.join(__dirname, "../views/login.html"));
+            res.render("login");
          });
     
     

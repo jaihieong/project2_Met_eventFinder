@@ -1,6 +1,6 @@
 require("dotenv").config();
 var express = require("express");
-//var exphbs = require("express-handlebars");
+var exphbs = require("express-handlebars");
 
 // Requiring our models for syncing
 var db = require("./models");
@@ -18,14 +18,9 @@ app.use(express.static("public"));
 
 
 //======If we will need handlebars==========
-// Handlebars
-// app.engine(
-//   "handlebars",
-//   exphbs({
-//     defaultLayout: "main"
-//   })
-// );
-// app.set("view engine", "handlebars");
+//Handlebars
+app.engine("handlebars", exphbs({ defaultLayout: "main"}));
+app.set("view engine", "handlebars");
 //========end for handlebars================
 
 // Routes
@@ -36,7 +31,7 @@ require("./routes/auth-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
