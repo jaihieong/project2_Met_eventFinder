@@ -1,9 +1,10 @@
 {
   "development": {
     "username": "root",
-    "password": "gwcoding",
-    "database": "exampledb",
-    "host": "localhost",
+    "password": "Pogran13!",
+    "database": "register",
+    "host": "127.0.0.1",
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
