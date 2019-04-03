@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Istok+Web:700" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css'/>
+    <link rel="stylesheet" href="./styles/styles.css" type="text/css" /> 
+    <title>User Register</title>
+</head>
+<body>
+
+    <div class="fillupform">
+
+        <h1><i class="fas fa-sign-in-alt"></i> Login Form</h1>
+
+        <form method="POST" action="/api/login">
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" name="email" class="form-control" id="userLogInEmail" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" name="password" class="form-control" id="userLogInPassword" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary loginbutton">Submit</button>
+        </form>
+        <p class="lead mt-4">
+            No Account? <a href="/register">Register</a>
+        </p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="../public/assets/js/script.js"></script>
+</body>
+</html>

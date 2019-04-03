@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Istok+Web:700" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css'/>
+    <link rel="stylesheet" href="./styles/styles.css" type="text/css" /> 
+    <title>User Register</title>
+</head>
+<body>
+
+    <div class="fillupform">
+        <h1><i class="fas fa-user-plus"></i> Register Form</h1>
+
+        <form method="POST" action="/api/register">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" id="firstN" placeholder="Your first name">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" id="lastN" placeholder="Your last name">
+            </div>
+            <div class="form-group">
+                <label for="location">Your zip code</label>
+                <input type="number" name="zipcode" id="zip" placeholder="Enter your zipcode">
+            </div>
+            <div class="form-group">
+                <label for="profilePicture">Your picture</label>
+                <input type="file" name="picture" id="pic">
+            </div> 
+
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" name="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" name="password" class="form-control" id="userPassword" placeholder="Password">
+            </div>
+            <!-- <div class="form-group">
+                <label for="inputPasswordConfirm">Confirm your password</label>
+                <input type="password" name="password" class="form-control" id="userPassword" placeholder="Password Confirm">
+            </div> -->
+
+            <button type="submit" class="btn btn-primary submitButton">Submit</button>
+        </form>
+        <p class="lead mt-4">Have An Account? <a href="/login">Login</a></p>
+    </div>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="../public/assets/js/script.js"></script>
+</body>
+</html>
