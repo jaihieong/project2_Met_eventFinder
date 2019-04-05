@@ -1,6 +1,6 @@
 // Requiring our Register model
 var db = require("../models");
-
+var passwordHash = require('password-hash');
 //Routes
 // =============================================================
 module.exports = function(app) {
@@ -37,12 +37,12 @@ module.exports = function(app) {
     if(errors.length > 0) {
       res.render("register", {
         errors: errors,
-        firstName: req.body.firstName, 
-        lastName: req.body.lastName, 
-        email: req.body.email, 
-        password: req.body.password,
-        zipcode: req.body.zipcode,
-        user_picture: req.body.picture
+        // firstName: req.body.firstName, 
+        // lastName: req.body.lastName, 
+        // email: req.body.email, 
+        // password: passwordHash.generate(req.body.password),
+        // zipcode: req.body.zipcode,
+        // user_picture: req.body.picture
       });
     } else {
       db.Register.findOne({ 
@@ -61,7 +61,7 @@ module.exports = function(app) {
             first_name: req.body.firstName, 
             last_name: req.body.lastName, 
             email: req.body.email, 
-            password: req.body.password,
+            password: passwordHash.generate(req.body.password),
             zipcode: req.body.zipcode,
             user_picture: req.body.picture
           }).then(function(result) {
@@ -100,45 +100,65 @@ module.exports = function(app) {
   });
 
   app.post("/api/login", function(req, res) {
-      console.log(req.body.email);
+    console.log(req.body.email);
     console.log(req.body.password);
-    res.send("LOgged in");
-    // db.Register.findOne({
-    //     where: {
-    //       email: req.body.email
-    //     }
-    // }).then(function (error, results, fields) {
+    var email = req.body.email;
+    var password = req.body.password;
+    console.log("start of app.post for login");
+    // res.send("LOgged in");
+    db.Register.findOne({
+        
+        where: {
+          email: email
+        }
+        
+    }).then(function (results) {
+        if (results == null){
+          console.log("email does not exist in db");
+          res.send({
+            "code":204,
+            "success":"Email does not exist//outer"
+          });
+        } else {
     // if (error) {
-        //   // console.log("error ocurred",error);
-        //   res.send({
-        //     "code":400,
-        //     "failed":"error ocurred"
-        //   })
-        // }else{
-        //   // console.log('The solution is: ', results);
-        //   if(results.length >0){
-        //     if(results[0].password == password){
-        //       res.send({
-        //         "code":200,
-        //         "success":"login sucessfull"
-        //           });
-        //     }
-        //     else{
-        //       res.send({
-        //         "code":204,
-        //         "success":"Email and password does not match"
-        //       });
-        //     }
-        //   }
-        //   else{
-        //     res.send({
-        //       "code":204,
-        //       "success":"Email does not exits"
-        //     });
-        //   }
-        // }
-        // 
-    // });
+    //       // console.log("error ocurred",error);
+    //       console.log("error if statement_Jai");
+    //       res.send({
+    //         "code":400,
+    //         "failed":"error ocurred"
+    //       })
+    //   }else{
+          console.log("The email: " + results.email);
+          console.log("The password: " + results.password);
+          if(results.email !== null){
+            console.log("result length if statament");
+            console.log(passwordHash.verify(req.body.password, results.password));
+            
+            if(passwordHash.verify(req.body.password, results.password)){
+              res.render("dashboard");
+              // res.json(results);
+              // res.send({
+              //   "code":200,
+              //   "success":"login sucessfull"
+              //     });
+            }
+            else{
+              res.send({
+                "code":204,
+                "success":"Email and password does not match"
+              });
+            }
+          } 
+          else {
+            res.send({
+              "code":204,
+              "success":"Email does not exist//outer"
+            });
+          }
+      }
+      // }
+      // res.json(results);
+    });
   });
 };
 
