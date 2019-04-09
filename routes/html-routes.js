@@ -30,7 +30,10 @@ module.exports = function(app) {
          app.get("/login", function(req, res) {
             res.render("login");
          });
-    
+        //Route to see dashboard/profile page
+        app.get("/dashboard", function (req, res) {
+            res.render("dashboard");
+        });
     
     
 };

@@ -2,11 +2,68 @@
   line-height: 2.5;
 } */
 
-.fillupform {
+/* Welcome page styling */
+body {
+  background-image: url(../styles/images/fairground-1149626_1920.jpg); 
+  height: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-attachment: ;  */
+}
+
+.navbar {
+  font-family: 'Comfortaa', cursive;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+  /* opacity: 0.5; */
+  /* border: .5px;
+  border-bottom-style: solid;
+  border-color: #6c757d; */
+}
+
+.logo{
+  width: 90px;
+  margin-left: 20px;
+}
+
+#log-btn {
+  margin-right: 20px;
+  text-decoration: white;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+  
+}
+
+#jumbotron {
+  font-family: 'Comfortaa', cursive;
+  /* background-image: url(../styles/images/fairground-1149626_1920.jpg); */
+  text-shadow: 0 0 .5px rgb(0, 0, 0);
+  opacity: 0.6;
+}
+
+#signUp-btn {
+  background:#e78200;
+}
+
+/* .fillupform {
   width: 500px;
   margin-left: auto;
   margin-right: auto;
 
-};
+}; */
+
+.card {
+  font-family: 'Comfortaa', cursive;
+  background-color: #f8f9fa;
+  /* text-shadow: 0 0 .5px rgb(0, 0, 0); */
+  border-color: gray;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Dashboard styling */
+.container {
+  font-family: 'Comfortaa', cursive;
+  background-color: #e78200;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+}
 
 

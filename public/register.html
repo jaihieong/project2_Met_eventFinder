@@ -1,14 +1,24 @@
-    <div class="fillupform">
-        <h1><i class="fas fa-user-plus"></i> Register Form</h1>
-        {{!-- {{> partials/messages }}  --}}
+<!DOCTYPE html>
+<html lang="en">
 
-        {{#each errors}}
-            <li>
-  	            {{this.msg}}
-  	        </li>
-            </br>
-        {{/each}}
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Istok+Web:700" rel="stylesheet">
+    <link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css' />
+    <link rel="stylesheet" href="../public/styles/styles.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <title>Register</title>
+</head>
 
+<body>
+    <!-- As a heading -->
+    <nav class="navbar navbar-light bg-light" class="navbar">
+        <span class="navbar-brand mb-0 h1"><img src="./styles/images/went.png" alt="went logo" class="logo"></span>
+        <a href="/login" class="btn btn-secondary btn-sm" data-toggle="popover" id="log-btn">Log in</a>
+    </nav>
+    
     <div class="row mt-5">
         <div class="col-md-4 m-auto">
             <div class="card card-body text-center" id="card">
@@ -70,3 +80,11 @@
             </div>
         </div>
     </div>
+
+    
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="../public/assets/js/script.js"></script>
+</body>
+
+</html>
