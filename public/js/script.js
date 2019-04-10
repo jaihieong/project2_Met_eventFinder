@@ -1,4 +1,5 @@
 console.log("script.js linked");
+
 // $(function () {
 //   //Submit button clicked in register form
 //   $(".submitButton").on("click", function (event) {

@@ -1,6 +1,7 @@
+console.log("eventAPI.js linked");
+
 // Weather API
 $("#searchbtn").on("click", function () {
-
 
   var zipCode = $("#userZip").val().trim();
   var queryURL = "https://api.aerisapi.com/forecasts/" + zipCode + "?&format=json&filter=daynight&from=friday&to=+5days&limit=5&client_id=Ykw9spzB2RG7Ik8FFmw9N&client_secret=33qIcxRcSahYSrtE1Vg9rsP3VG5srtYsR690rCTd";
@@ -9,13 +10,11 @@ $("#searchbtn").on("click", function () {
     url: queryURL,
     method: "GET"
   })
-    .then(function (response) {
+  .then(function (response) {
 
-      if (!response.success) {
-        console.log('Weather Information is not available at the moment!')
-      } else {
-
-      }
+    if (!response.success) {
+      console.log('Weather Information is not available at the moment!')
+    } else {
 
       var weatherDiv = $("<div>");
 
@@ -36,9 +35,6 @@ $("#searchbtn").on("click", function () {
         var dateandTime = $("<p>").text(dateString);
         var formatedDate = moment(dateandTime).format("LLLL");
 
-
-
-
         var iconShow = results[i].icon;
         var iconImage = $("<img>");
         iconImage.attr("src", "http://cdn.aerisapi.com/wxblox/icons/" + iconShow);
@@ -50,17 +46,14 @@ $("#searchbtn").on("click", function () {
 
         $("#forecast").prepend(weatherDiv);
       }
-
-
-
-
-    })
+    }
+  })
 });
 
 //eventful API
-
 $("#searchbtn").on("click", function() {
 
+    var categories = []; //list of categories
     var userZip = $("#userZip").val().trim();
     var userCat = $("#userCat").val().trim();
     

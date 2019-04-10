@@ -1,9 +1,13 @@
 // Requiring our Register model
 var db = require("../models");
 var passwordHash = require('password-hash');
+// boolean to mimic loggedin features
+var loggedin = false;
+
 //Routes
 // =============================================================
 module.exports = function (app) {
+  
   //POST route for saving new user
   app.post("/api/register", function (req, res) {
 
@@ -141,6 +145,7 @@ module.exports = function (app) {
         //         "failed":"error ocurred"
         //       })
         //   }else{
+
         console.log("The email: " + results.email);
         console.log("The password: " + req.body.password);
         if (results.email !== null) {
@@ -165,6 +170,12 @@ module.exports = function (app) {
             }).catch(function (err) {
               res.json(err);
             });
+            // boolean to mimic loggedin features
+            loggedin = true;
+
+            if (loggedin){
+              console.log("logged in");
+            }
             res.redirect("/dashboard");
             // res.render("dashboard", {
             //   name: results.first_name
@@ -178,7 +189,7 @@ module.exports = function (app) {
           else {
             //In the case when login email and password dont match
             res.render("login", {
-              msg: "Email and password don't not match"
+              msg: "Email and password do not match"
             });
 
             // res.send({
@@ -206,6 +217,10 @@ module.exports = function (app) {
   });
 
 };
+
+// module.exports = {
+//   loggedin: loggedin
+// };
 
 
 
