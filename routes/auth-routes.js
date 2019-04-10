@@ -70,9 +70,10 @@ module.exports = function (app) {
           }).then(function (result) {
             //res.json(result);
             //res.send("HELLO");
-            res.render("login", {
-              msg: "You are registered, now you can log in"
-            });
+            res.redirect("/login");
+            // res.render("login", {
+            //   msg: "You are registered, now you can log in"
+            // });
 
 
           }).catch(function (err) {
@@ -148,9 +149,26 @@ module.exports = function (app) {
 
           if (passwordHash.verify(req.body.password, results.password)) {
             console.log(results.first_name);
-            res.render("dashboard", {
-              name: results.first_name
+            db.Login.create({
+              email: req.body.email,
+              password: passwordHash.generate(req.body.password)
+              
+            }).then(function (result) {
+              //res.json(result);
+              //res.send("HELLO");
+              // res.redirect("/login");
+              // res.render("login", {
+              //   msg: "You are registered, now you can log in"
+              // });
+  
+  
+            }).catch(function (err) {
+              res.json(err);
             });
+            res.redirect("/dashboard");
+            // res.render("dashboard", {
+            //   name: results.first_name
+            // });
             // res.json(results);
             // res.send({
             //   "code":200,

@@ -5,7 +5,7 @@ var db = require("../models");
 module.exports = function(app) {
 
   // GET route for getting all of the 
-  app.get("/api/users", function(req, res) {
+  app.get("/api/register", function(req, res) {
     // findAll returns all entries for a table when used with no options
     db.Register.findAll({}).then(function(dbResult) {
       // We have access to the Registers as an argument inside of the callback function
