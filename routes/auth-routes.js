@@ -2,14 +2,17 @@
 var db = require("../models");
 var passwordHash = require('password-hash');
 // boolean to mimic loggedin features
-var loggedin = false;
+
 
 //Routes
 // =============================================================
 module.exports = function (app) {
+
   
+
   //POST route for saving new user
   app.post("/api/register", function (req, res) {
+    
 
     console.log(req.body.firstName);
     console.log(req.body.lastName);
@@ -112,6 +115,9 @@ module.exports = function (app) {
   });
 
   app.post("/api/login", function (req, res) {
+
+    var loggedin = false;
+    
     console.log(req.body.email);
     console.log(req.body.password);
     var email = req.body.email;
@@ -170,12 +176,17 @@ module.exports = function (app) {
             }).catch(function (err) {
               res.json(err);
             });
+
             // boolean to mimic loggedin features
             loggedin = true;
+            // if (loggedin){
+            //   console.log("logged in");
+            //   console.log(loggedin);
+            //   db.Loginstatus.create({
+            //     status: loggedin
+            //   })
+            // }
 
-            if (loggedin){
-              console.log("logged in");
-            }
             res.redirect("/dashboard");
             // res.render("dashboard", {
             //   name: results.first_name
@@ -197,6 +208,11 @@ module.exports = function (app) {
             //   "success":"Email and password does not match"
             // });
           }
+            // logging whether the user is logged in or not
+          console.log("log in status: " + loggedin);
+          db.Loginstatus.create({
+            status: loggedin
+          })
         }
         else {
           //?????????????????????? - do we need it, Jai? --- line 124 -- isn't the same?
@@ -215,6 +231,8 @@ module.exports = function (app) {
       msg: "PROFILE PAGE"
     });
   });
+
+
 
 };
 
