@@ -5,7 +5,12 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: false
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false
       }
+
     });
     return Loginstatus;
 }
