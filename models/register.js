@@ -21,8 +21,8 @@ module.exports = function(sequelize, DataTypes) {
       isInt: true
     },
     user_picture: {
-      type: DataTypes.BLOB,
-      allowNull: false
+      type: DataTypes.BLOB
+      
     },
     email: {
       type: DataTypes.STRING,

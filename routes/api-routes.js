@@ -22,6 +22,14 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/loginstatus", function(req, res) {
+    // findAll returns all entries for a table when used with no options
+    db.Loginstatus.findAll({}).then(function(dbResult) {
+      // We have access to the Registers as an argument inside of the callback function
+      res.json(dbResult);
+    });
+  });
+
 
 
   // // POST route for saving a new Register
