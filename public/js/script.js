@@ -55,6 +55,7 @@ $(function () {
     };
     $.post("/api/login", user, function(results) {
         console.log(results);
+        console.log("email from script.js: " + results.email);
 
         // Clear sessionStorage
         sessionStorage.clear();

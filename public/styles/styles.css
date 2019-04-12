@@ -93,3 +93,8 @@ body {
   margin-right: 150px;
   text-align: center;
 }
+
+.clickable:hover {
+  background-color: rgba(0, 255, 157, 0.562);
+  cursor: pointer;
+}

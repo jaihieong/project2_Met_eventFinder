@@ -19,11 +19,11 @@
       {{!-- <span>
         <form class="form-inline">
           <input class="form-control form-inline" id="userCat" type="text" placeholder="Category">
-          <input class="form-control form-inline" id="userZip" type="text" placeholder="Zip code">
+          <input class="form-control form-inline" id="zipCode" type="text" placeholder="Zip code">
           <button class="btn btn-secondary" id="searchbtn">Search</button>
         </form>
       </span> --}}
-
+      <span>
       <div class="container">
         <form action="#" method="post" novalidate="novalidate">
             <div class="row">
@@ -31,7 +31,7 @@
                     <div class="row">
                         
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <input id="userZip" type="text" class="form-control search-slt" placeholder="Zipcode">
+                            <input id="zipCode" type="text" class="form-control search-slt" placeholder="Zipcode">
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <select id="userCat" class="form-control search-slt" id="exampleFormControlSelect1">
@@ -53,6 +53,7 @@
             </div>
         </form>
       </div>
+      </span>
 
       <a href="./login" class="btn btn-secondary btn-sm login-button" data-toggle="popover" id="log-btn">Log in</a>
     </nav>
@@ -64,6 +65,56 @@
   <script>
     function myFunction() {
       $("#test-name").text(sessionStorage.getItem("firstname"));
+      //========Onload /dashboard weather and random events=============================
+        var zipCode = sessionStorage.getItem("zipcode");
+        var queryURL = "https://api.aerisapi.com/forecasts/" + zipCode + "?&format=json&filter=daynight&from=friday&to=+1days&limit=1&client_id=Ykw9spzB2RG7Ik8FFmw9N&client_secret=33qIcxRcSahYSrtE1Vg9rsP3VG5srtYsR690rCTd";
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        .then(function (response) {
+
+        if (!response.success) {
+        console.log('Weather Information is not available at the moment!')
+        } else {
+
+          var weatherDiv = $("<div>");
+
+          var results = response.response[0].periods;
+          
+          console.log(results);
+
+          for (var i = 0; i < results.length; i++) {
+
+            var maxF = $("<p>").text("High: " + results[i].maxFeelslikeF);
+            //console.log(maxF);
+            var minF = $("<p>").text("Low: " + results[i].minFeelslikeF);
+            var weather1 = $("<p>").text(results[i].weather);
+            var ts = results[i].timestamp;
+            console.log(ts);
+            var dateString = moment(ts).calendar();
+            console.log(dateString);
+            var dateandTime = $("<p>").text(dateString);
+            var formatedDate = moment(dateandTime).format("LLLL");
+
+            var iconShow = results[i].icon;
+            var iconImage = $("<img>");
+            iconImage.attr("src", "http://cdn.aerisapi.com/wxblox/icons/" + iconShow);
+            weatherDiv.append(iconImage);
+            weatherDiv.append(maxF);
+            weatherDiv.append(minF);
+            weatherDiv.append(formatedDate);
+            weatherDiv.append(weather1);
+
+            $("#forecast").prepend(weatherDiv);
+          }
+        }
+      })
+
+        
+    
+    
     }
   </script>
   <script src="https://code.jquery.com/jquery.js"></script>

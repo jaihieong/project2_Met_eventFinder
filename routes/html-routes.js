@@ -30,9 +30,29 @@ module.exports = function(app) {
          app.get("/login", function(req, res) {
             res.render("login", {title: "Login Page"});
          });
+
         //Route to see dashboard/profile page
         app.get("/dashboard", function (req, res) {
-            res.render("dashboard", {title: "Profile Page"});
+            //if logged in
+                // then show dashboard
+            // else
+                // back to login
+            console.log(req);
+            
+            // console.log(res);
+            // console.log(res.first_name);
+            // console.log(req.first_name);
+            var loginstatus = true;
+
+            if (loginstatus) {
+                // show dashboard
+                res.render("dashboard", {title: "Profile Page"});
+            } else {
+                // redirect to login
+                res.redirect("/login");
+            }
+
+            
         });
         //Route to see specific event page
         app.get("/event", function (req, res) {

@@ -6,7 +6,7 @@ var passwordHash = require('password-hash');
 module.exports = function(app) {
   //POST route for saving new user
   app.post("/api/register", function(req, res) {
-    console.log(req.body);
+    // console.log(req.body);
     console.log(req.body.newFirstName);
     console.log(req.body.newLastName);
     console.log(req.body.email);
@@ -67,7 +67,7 @@ module.exports = function(app) {
             zipcode: req.body.newZipcode,
             user_picture: req.body.picture
           }).then(function(result) {
-            //  res.json(result);
+             res.json(result);
             
             // res.send("HELLO");
  
@@ -140,10 +140,22 @@ module.exports = function(app) {
             if(results.email !== null){
               console.log("result length if statament");
               console.log(passwordHash.verify(req.body.password, results.password));
-              
+              // checks password with db password
               if(passwordHash.verify(req.body.password, results.password)){
-                console.log(results);
+                var loginstatus = true;
+                // console.log(results); database record matching the email
+                console.log("Login successful with email: " + results.email);
+                // db.Loginstatus.create ({
+                //   email: results.email, 
+                //   status: loginstatus
+                // }).then (function(loginstatus) {
+                //   // We have access to the new todo as an argument inside of the callback function
+                //   console.log(loginstatus.status);
+                //   res.json(loginstatus);
+                // })
+                console.log(results.first_name);
                 res.json(results);
+                
                 // res.render("dashboard", {name: results.first_name});
                 // res.json(results);
                 // res.send({

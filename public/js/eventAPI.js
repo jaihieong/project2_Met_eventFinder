@@ -3,8 +3,8 @@ console.log("eventAPI.js linked");
 // Weather API
 $("#searchbtn").on("click", function () {
 
-  var zipCode = $("#userZip").val().trim();
-  var queryURL = "https://api.aerisapi.com/forecasts/" + zipCode + "?&format=json&filter=daynight&from=friday&to=+1days&limit=1&client_id=Ykw9spzB2RG7Ik8FFmw9N&client_secret=33qIcxRcSahYSrtE1Vg9rsP3VG5srtYsR690rCTd";
+  var userZip = $("#zipCode").val().trim();
+  var queryURL = "https://api.aerisapi.com/forecasts/" + userZip + "?&format=json&filter=daynight&from=friday&to=+1days&limit=1&client_id=Ykw9spzB2RG7Ik8FFmw9N&client_secret=33qIcxRcSahYSrtE1Vg9rsP3VG5srtYsR690rCTd";
 
   $.ajax({
     url: queryURL,
@@ -44,6 +44,7 @@ $("#searchbtn").on("click", function () {
         weatherDiv.append(formatedDate);
         weatherDiv.append(weather1);
 
+        $("#forecast").empty();
         $("#forecast").prepend(weatherDiv);
       }
     }
@@ -54,7 +55,7 @@ $("#searchbtn").on("click", function () {
 $("#searchbtn").on("click", function() {
 
     var categories = []; //list of categories
-    var userZip = $("#userZip").val().trim();
+    var userZip = $("#zipCode").val().trim();
     var userCat = $("#userCat").val().trim();
     
     var oArgs = {
@@ -63,7 +64,7 @@ $("#searchbtn").on("click", function() {
         app_key: "Zdp7TJQBkTgdJwbM",
         q: test2,
         "date": "future",
-        page_size: 3,
+        page_size: 10,
         sort_order: "popularity",
         within: 25
  };
@@ -75,7 +76,7 @@ $("#searchbtn").on("click", function() {
 
     var result = oData.events.event;
     console.log(result);
-
+    $("#event").empty();
     for (var i =0; i<result.length; i++){
 
         var eventDiv = $("<div>");
@@ -91,9 +92,12 @@ $("#searchbtn").on("click", function() {
         urlInfo.attr("src", result[i].url);
 
         var eventImage = $("<img>");
-        eventImage.attr("src", result[i].image.medium.url); 
-
+        eventImage.attr("src", result[i].image.medium.url);
+        
         var goingbtn = $("<btn>");
+
+        eventDiv.addClass("clickable");
+        eventDiv.attr("id", result[i].id);
         eventDiv.append(eventImage);
         eventDiv.append(title);
         eventDiv.append(startTime);
@@ -102,6 +106,7 @@ $("#searchbtn").on("click", function() {
         eventDiv.append(goingbtn);
         //eventDiv.append(urlInfo);
 
+        
         $("#event").append(eventDiv);
         $("#going");
   
@@ -110,6 +115,48 @@ $("#searchbtn").on("click", function() {
    
  });
 
+});
+
+$("#event").on("click", "div", function() {
+  event.preventDefault();
+
+  console.log("clicked");
+  var choice = $(this).attr("id");
+  console.log(choice);
+  // //User click on recipeID, this way we able to pull the index of recipe
+  // var choice = $(this).attr("id");
+  // console.log(choice);
+  // //Having index of recipe we can pull out the recipeID from array
+  // var singleRecipeID = recipeArray[choice];
+  // console.log(singleRecipeID);
+  // var appID = "c264894e&";
+  // //
+  // var apiKey = "f5984f792fe199d55811bb9a14dd9e5c";
+  // // Here we are building the URL we need to query the database
+  // var queryURL = "https://api.yummly.com/v1/api/recipe/" + singleRecipeID + "?_app_id=" + appID + "&_app_key=" + apiKey;
+
+  // // Here we run our AJAX call to the OpenWeatherMap API
+  // $.ajax({
+  // url: queryURL,
+  // method: "GET"
+  // })
+  // // We store all of the retrieved data inside of an object called "response"
+  // .then(function(response) {
+  //     //Empty the div container from the list of recipes,
+  //     //for displaying the single recipe result
+  //     $("#containerResults").empty();
+  //     //Create variables to store the name, image and ingredient list of single recipe
+  //     var singleRecipeName = response.name;
+  //     var singleRecipeImgURL = response.images.hostedMediumUrl;
+  //     var singleRecipeIngredients = response.ingredientLines;
+  //     //Create elements in HTML to hold the name, image and ingredient list
+  //     var singleRecipeNameDisplay = $("<p>").text(singleRecipeName);
+  //     var singleRecipeImgDisplay = $("<img>").attr("src", singleRecipeImgURL);
+  //     var singleRecipeIngredientsDisplay = $("<p>").text("Ingredients: " + singleRecipeIngredients);
+  //     //Display in HTML all the above data
+  //     $("#containerResults").append(singleRecipeNameDisplay, singleRecipeImgDisplay, singleRecipeIngredientsDisplay);
+  // //console.log(response);
+  // });
 });
 
 
