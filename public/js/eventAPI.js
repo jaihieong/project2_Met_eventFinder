@@ -123,6 +123,21 @@ $("#event").on("click", "div", function() {
   console.log("clicked");
   var choice = $(this).attr("id");
   console.log(choice);
+
+  var eventQuery = "https://api.eventful.com/json/events/get?&id="+choice+"E0-001-123080839-5&app_key=Zdp7TJQBkTgdJwbM";
+  console.log(eventQuery);
+
+  $.ajax({
+    url: eventQuery,
+    method: "GET"
+  })
+  .then(function (response) {
+  
+    var newDiv = $("<div>");
+    newDiv.append(response.id);
+    console.log(response.id);
+    $("#event-detail").append(newDiv);
+  })
   // //User click on recipeID, this way we able to pull the index of recipe
   // var choice = $(this).attr("id");
   // console.log(choice);
