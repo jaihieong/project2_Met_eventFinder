@@ -17,22 +17,26 @@ module.exports = function(app) {
         
         //Route to see welcome page
         app.get("/", function(req, res) {
-            res.render("welcome");
+            res.render("welcome", {title: "Welcome Page"});
         })
 
         //Route to see the sign up page
          app.get("/register", function(req, res) {
-            res.render("register");
+            res.render("register", {title: "Register Page"});
             
          });
 
         //Route to see log in page
          app.get("/login", function(req, res) {
-            res.render("login");
+            res.render("login", {title: "Login Page"});
          });
         //Route to see dashboard/profile page
         app.get("/dashboard", function (req, res) {
-            res.render("dashboard");
+            res.render("dashboard", {title: "Profile Page"});
+        });
+        //Route to see specific event page
+        app.get("/event", function (req, res) {
+            res.render("event", {title: "Event Page"});
         });
     
     

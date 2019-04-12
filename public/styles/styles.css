@@ -4,7 +4,7 @@
 
 /* Welcome page styling */
 body {
-  background-image: url(../styles/images/fairground-1149626_1920.jpg); 
+  /* background-image: url(../styles/images/fairground-1149626_1920.jpg);  */
   height: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -15,11 +15,12 @@ body {
 .navbar {
   font-family: 'Comfortaa', cursive;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
-  /* opacity: 0.5; */
-  /* border: .5px;
-  border-bottom-style: solid;
-  border-color: #6c757d; */
 }
+
+/* #userCat {
+  float: left;
+  position: static; 
+} */
 
 .logo{
   width: 90px;
@@ -37,7 +38,8 @@ body {
   font-family: 'Comfortaa', cursive;
   /* background-image: url(../styles/images/fairground-1149626_1920.jpg); */
   text-shadow: 0 0 .5px rgb(0, 0, 0);
-  opacity: 0.6;
+  text-align: center;
+  opacity: 0.8;
 }
 
 #signUp-btn {
@@ -60,10 +62,34 @@ body {
 }
 
 /* Dashboard styling */
+.background2 {
+  background-color: #f8f9fa;
+}
 .container {
   font-family: 'Comfortaa', cursive;
-  background-color: #e78200;
+  /* background-color: #6c757d; */
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+  /* opacity: 0.8; */
 }
 
+#forecast {
+  /* background-color: #6c757d; */
+  /* opacity: 0.5; */
+  width: 250px;
+  height: 30px;
+  align-content: center;
+  text-shadow: 1px;
+  /* margin-right: 150px; */
+}
 
+#profile-card {
+  margin-left: 150px;
+  text-align: center;
+}
+
+#events-card {
+  padding-top: 20px;
+  margin-left: 150px;
+  margin-right: 150px;
+  text-align: center;
+}

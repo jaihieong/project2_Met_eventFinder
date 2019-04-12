@@ -4,7 +4,7 @@ console.log("eventAPI.js linked");
 $("#searchbtn").on("click", function () {
 
   var zipCode = $("#userZip").val().trim();
-  var queryURL = "https://api.aerisapi.com/forecasts/" + zipCode + "?&format=json&filter=daynight&from=friday&to=+5days&limit=5&client_id=Ykw9spzB2RG7Ik8FFmw9N&client_secret=33qIcxRcSahYSrtE1Vg9rsP3VG5srtYsR690rCTd";
+  var queryURL = "https://api.aerisapi.com/forecasts/" + zipCode + "?&format=json&filter=daynight&from=friday&to=+1days&limit=1&client_id=Ykw9spzB2RG7Ik8FFmw9N&client_secret=33qIcxRcSahYSrtE1Vg9rsP3VG5srtYsR690rCTd";
 
   $.ajax({
     url: queryURL,
@@ -24,9 +24,9 @@ $("#searchbtn").on("click", function () {
 
       for (var i = 0; i < results.length; i++) {
 
-        var maxF = $("<p>").text("High: " + results[i].maxTempF);
+        var maxF = $("<p>").text("High: " + results[i].maxFeelslikeF);
         //console.log(maxF);
-        var minF = $("<p>").text("Low: " + results[i].minTempF);
+        var minF = $("<p>").text("Low: " + results[i].minFeelslikeF);
         var weather1 = $("<p>").text(results[i].weather);
         var ts = results[i].timestamp;
         console.log(ts);

@@ -5,30 +5,67 @@
     <link href="https://fonts.googleapis.com/css?family=Istok+Web:700" rel="stylesheet">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css'/>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css'/>
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <link rel="stylesheet" href="./styles/styles.css" type="text/css" />
     <script src="https://cdn.aerisapi.com/wxblox/aeris-wxblox.min.js"></script>
     <script type="text/javascript" src="http://api.eventful.com/js/api"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-    <title>Welcome page</title>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <title>{{title}}</title>
 </head>
-<body>
+<body onload="myFunction()">
     <nav class="navbar navbar-light bg-light" class="nabvar">
       <span class="navbar-brand mb-0 h1"><img src="./styles/images/went.png" alt="went logo" class="logo"></span>
 
-      <span>
-        {{!-- <form class="form-inline"> --}}
+      {{!-- <span>
+        <form class="form-inline">
           <input class="form-control form-inline" id="userCat" type="text" placeholder="Category">
           <input class="form-control form-inline" id="userZip" type="text" placeholder="Zip code">
           <button class="btn btn-secondary" id="searchbtn">Search</button>
-        {{!-- </form> --}}
-      </span>
+        </form>
+      </span> --}}
+
+      <div class="container">
+        <form action="#" method="post" novalidate="novalidate">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <input id="userZip" type="text" class="form-control search-slt" placeholder="Zipcode">
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <select id="userCat" class="form-control search-slt" id="exampleFormControlSelect1">
+                                
+                                <option>Categories</option>
+                                <option>Music</option>
+                                <option>Concerts</option>
+                                <option>Sport Events</option>
+                                <option>Food</option>
+                                <option>Nightlife</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <button id="searchbtn" type="button" class="btn btn-danger wrn-btn">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+      </div>
 
       <a href="./login" class="btn btn-secondary btn-sm login-button" data-toggle="popover" id="log-btn">Log in</a>
     </nav>
 
-    {{{body}}}
+    <div id="name-display"></div>
+    
 
+    {{{body}}}
+  <script>
+    function myFunction() {
+      $("#test-name").text(sessionStorage.getItem("firstname"));
+    }
+  </script>
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="/js/script.js"></script>
   <script src="/js/eventAPI.js"></script>

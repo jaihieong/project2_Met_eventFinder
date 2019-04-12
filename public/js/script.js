@@ -5,33 +5,37 @@ $(function () {
   //Submit button clicked in register form
   $(".submitButton").on("click", function (event) {
       event.preventDefault();
-      var newUserFirstName = $("#firstN").val();
-      var newUserLastName = $("#lastN").val();
+      var newFirstName = $("#firstN").val();
+      var newLastName = $("#lastN").val();
       var email = $("#userEmail").val();
       var password = $("#userPassword").val();
+      var password2 = $("#userPassword2").val();
 
-      console.log(newUserFirstName);
-      console.log(newUserLastName);
+      console.log(newFirstName);
+      console.log(newLastName);
       console.log(email);
       console.log(password);
   //Grabbing all the inputs from the filled form
     var newUser = {
-          newUserFirstName: $("#firstN").val(),
-          newUserLastName: $("#lastN").val(),
+          newFirstName: $("#firstN").val(),
+          newLastName: $("#lastN").val(),
           email: $("#userEmail").val(),
           password: $("#userPassword").val(),
-          newUserZipcode: $("#zip").val()
+          password2: $("#userPassword2").val(),
+          newZipcode: $("#zip").val()
+
        };
-    if (newUser.password.length > 0 && newUser.email.length > 0 && newUser.newUserLastName.length > 0 && newUser.newUserFirstName.length > 0 && newUser.newUserZipcode > 0) {
+    if (newUser.password.length > 0 && newUser.email.length > 0 && newUser.newLastName.length > 0 && newUser.newFirstName.length > 0 && newUser.newZipcode > 0) {
 
   //Calling to  the server for storing the the user info
       //$.ajax("/api/register", {
         $.ajax({
           type: "POST",
-          url: "/register",
+          url: "/api/register",
           data: newUser
         }).then(
           function () {
+            // console.log(data);
             //window.location.href = "/login";
             location.replace("/login");
             console.log("New user registered");
@@ -49,14 +53,27 @@ $(function () {
       email: $("#userLogInEmail").val(),
       password: $("#userLogInPassword").val()
     };
-    $.post("/login", user, function(results) {
+    $.post("/api/login", user, function(results) {
         console.log(results);
+
+        // Clear sessionStorage
+        sessionStorage.clear();
+
+        // Store all content into sessionStorage
+        sessionStorage.setItem("firstname", results.first_name);
+        sessionStorage.setItem("lastname", results.last_name);
+        sessionStorage.setItem("zipcode", results.zipcode);
+        sessionStorage.setItem("email", results.email);
+        sessionStorage.setItem("id", results.id);
+        
+
         console.log(user);
         console.log("loggin went");
+
         location.replace("/dashboard");
         
 
-        //window.location.href = "/";
+        // window.location.href = "/";
 
     //   if (results) {
     //     $.get("/api/users/key", user, function(results) {
@@ -73,7 +90,9 @@ $(function () {
     });
   });
   
-
+  function myFunction() {
+    $("#test-name").text(sessionStorage.getItem("firstname"));
+  }
 
 
 

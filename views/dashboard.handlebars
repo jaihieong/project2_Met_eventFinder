@@ -1,52 +1,52 @@
-    <div class="container">
-        <div class="row">
-            <div class="col-md">
-                <h3>Hello Jhonny!</h3>
-                <div class="card" style="width: 18rem;">
-                    <img src="./styles/images/went.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                            card's content.
-                        </p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
+<br>
+<br>
+{{!-- <div class="container"> --}}
+    <div class="row">
+        {{!-- <div class="col-2"></div> --}}
+        <div class="col-6">
+            {{!-- <h3>Hello {{name}}</h3> --}}
+            <div class="card" style="width: 18rem;" id="profile-card">
+                <img src="./styles/images/went.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Jhonatan</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                    </p>
                 </div>
-            </div>
-            <!-- <div class="col-sm">
-          <h3>Mesagges</h3>
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <i class="fas fa-comments"></i>
-            </div>
-          </div>
-        </div> -->
-            <div class="col-md">
-                <h3>Today's forecast</h3>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <div class="col 6" id="forecast"></div>
-                    </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Saved Events</li>
+                    <li class="list-group-item">Events Going</li>
+                    <li class="list-group-item">Messages</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
                 </div>
             </div>
         </div>
-        <br>
-        <!-- <div class="container"> -->
+        
+        <div class="col-6">
+            {{!-- <h3>Today's forecast</h3> --}}
+            {{!-- <div class="card" style="width: 16rem;"> --}}
+                <div class="card-body">
+                    <div class="col 6" id="forecast"></div>
+                </div>
+            {{!-- </div> --}}
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    {{!-- <div class="container">  --}}
         <div class="row">
-            <div class="col-sm">
-                <div class="card">
+            {{!-- <div class="col-2"></div> --}}
+            <div class="col-12">
+                <div class="card" id="events-card">
                     <!-- <div class="col 6" id="forecast"></div> -->
                     <div id="event"></div>
                 </div>
             </div>
         </div>
-        <!-- </div> -->    
-    </div>
+        <br>
+    {{!-- </div>     --}}
+    {{!-- </div>     --}}
