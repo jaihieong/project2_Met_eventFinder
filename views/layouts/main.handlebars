@@ -67,7 +67,8 @@
     {{{body}}}
   <script>
     function myFunction() {
-      $("#test-name").text(sessionStorage.getItem("firstname"));
+      $("#test-name").text("Welcome, " + sessionStorage.getItem("firstname") + "!");
+      
       //========Onload /dashboard weather and random events=============================
         var zipCode = sessionStorage.getItem("zipcode");
         var queryURL = "https://api.aerisapi.com/forecasts/" + zipCode + "?&format=json&filter=daynight&from=friday&to=+1days&limit=1&client_id=Ykw9spzB2RG7Ik8FFmw9N&client_secret=33qIcxRcSahYSrtE1Vg9rsP3VG5srtYsR690rCTd";

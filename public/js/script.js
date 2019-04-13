@@ -3,6 +3,7 @@ console.log("script.js linked");
 console.log("script.js file is connected");
 $("#logout-btn").on("click", function(event) {
   console.log("logout btn clicked");
+  sessionStorage.clear();
   location.replace("/login");
 });
 
