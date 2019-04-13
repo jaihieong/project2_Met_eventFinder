@@ -5,6 +5,21 @@ var axios = require("axios");
 //Routes
 // =============================================================
 module.exports = function(app) {
+  app.post("/api/comments", function(req, res) {
+    db.Comment.create({
+      author: req.body.author,
+      body:req.body.body
+    }).then(function(results) {
+
+      res.end();
+    });
+  });
+
+  app.get("/api/displaycomments", function(req, res) {
+    db.Comment.findAll({}).then(function(results){
+      res.json(results);
+    });
+  });
 
   // GET route for getting all of the 
   app.get("/api/register", function(req, res) {

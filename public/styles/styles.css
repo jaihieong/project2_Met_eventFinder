@@ -98,3 +98,9 @@ body {
   background-color: rgba(0, 255, 157, 0.562);
   cursor: pointer;
 }
+
+#card #image{
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+}

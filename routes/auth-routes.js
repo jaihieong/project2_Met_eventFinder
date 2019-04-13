@@ -164,7 +164,7 @@ module.exports = function(app) {
                 //     });
               }
               else{
-                res.render("login");
+                res.redirect("login");
                 res.send({
                   "code":204,
                   "success":"Email and password does not match"
