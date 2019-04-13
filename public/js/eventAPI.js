@@ -123,21 +123,55 @@ $("#event").on("click", "div", function() {
   console.log("clicked");
   var choice = $(this).attr("id");
   console.log(choice);
-
-  var eventQuery = "https://api.eventful.com/json/events/get?&id="+choice+"E0-001-123080839-5&app_key=Zdp7TJQBkTgdJwbM";
-  console.log(eventQuery);
+  var eventID = {
+    id: choice
+  };
 
   $.ajax({
-    url: eventQuery,
-    method: "GET"
-  })
-  .then(function (response) {
+    type: "POST",
+    url: "/api/event",
+    data: eventID
+  }).then(function(result) {
+    console.log(result)
+    console.log(result.address);
+    console.log(result.city);
+    console.log(result.description);
+    console.log(result.title);
+    console.log(result.start_time);
+    console.log(result.venue_name);
+    console.log(result.images.image[0].medium.url);
+
+    // Clear sessionStorage
+    sessionStorage.clear();
+
+    // Store all content into sessionStorage
+    sessionStorage.setItem("address", result.address);
+    sessionStorage.setItem("city", result.city);
+    sessionStorage.setItem("title", result.title);
+    sessionStorage.setItem("description", result.description);
+    sessionStorage.setItem("start_time", result.start_time);
+    sessionStorage.setItem("venue_name", result.venue_name);
+    sessionStorage.setItem("image", result.images.image[0].medium.url);
+
+    location.replace("/event");
+
+  });
+
+
+  // var eventQuery = "https://api.eventful.com/json/events/get?&id="+choice+"E0-001-123080839-5&app_key=Zdp7TJQBkTgdJwbM";
+  // //console.log(eventQuery);
+
+  // $.ajax({
+  //   url: eventQuery,
+  //   method: "GET"
+  // })
+  // .then(function (response) {
   
-    var newDiv = $("<div>");
-    newDiv.append(response.id);
-    console.log(response.id);
-    $("#event-detail").append(newDiv);
-  })
+  //   var newDiv = $("<div>");
+  //   newDiv.append(response.id);
+  //   console.log(response.id);
+  //   $("#event-detail").append(newDiv);
+  // })
   // //User click on recipeID, this way we able to pull the index of recipe
   // var choice = $(this).attr("id");
   // console.log(choice);

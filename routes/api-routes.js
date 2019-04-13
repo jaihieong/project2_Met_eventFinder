@@ -1,5 +1,7 @@
 // Requiring our register database
 var db = require("../models");
+var axios = require("axios");
+
 //Routes
 // =============================================================
 module.exports = function(app) {
@@ -30,8 +32,37 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/event", function(req, res) {
+    console.log(req.body.id);
 
+    axios
+      .get("https://api.eventful.com/json/events/get?&id=" + req.body.id + "E0-001-123080839-5&app_key=Zdp7TJQBkTgdJwbM")
+      .then(function(response) {
+        // If the axios was successful...
+        // Then log the body from the site!
+        console.log(response.data);
+        res.json(response.data);
+      })
+      .catch(function(error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an object that comes back with details pertaining to the error that occurred.
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+    
+      });
 
+  });
   // // POST route for saving a new Register
   // app.post("/api/Registers", function(req, res) {
   //   // create takes an argument of an object describing the item we want to

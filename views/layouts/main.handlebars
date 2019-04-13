@@ -112,7 +112,23 @@
         }
       })
 
-        
+    var title = sessionStorage.getItem("title");
+    var address = sessionStorage.getItem("address");
+    var city = sessionStorage.getItem("city");
+    var time = sessionStorage.getItem("start_time");
+    var venueName = sessionStorage.getItem("venue_name");
+    var image = sessionStorage.getItem("address"); 
+    var description = sessionStorage.getItem("description");
+
+    $("#image").attr("src", image);
+    $("#eventName").html(title);
+    $("#address").html(address);
+    $("#city").html(city);
+    $("#time").html(time);
+    $("#venueName").html(venueName);
+    $("#description").html(description);
+
+
     
     
     }
