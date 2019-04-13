@@ -1,4 +1,16 @@
 require("dotenv").config();
+
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+  connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'gwcoding',
+    database: 'register'
+  });
+};
+
 var express = require("express");
 //We import the passport module and the express-session, 
 //both of which we need to handle authentication:
