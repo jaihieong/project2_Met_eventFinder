@@ -4,11 +4,12 @@
 
 /* Welcome page styling */
 body {
-  /* background-image: url(../styles/images/fairground-1149626_1920.jpg);  */
-  height: cover;
-  background-position: center;
+  background-image: url(../styles/images/fairground-1149626_1920.jpg); 
+  /* height: cover;
+  background-position: center; */
   background-repeat: no-repeat;
   background-size: cover;
+  object-fit: fill;
   /* background-attachment: ;  */
 }
 
@@ -27,11 +28,14 @@ body {
   margin-left: 20px;
 }
 
-#log-btn {
+#logout-btn {
   margin-right: 20px;
   text-decoration: white;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
   
+}
+#searchbtn {
+  background:#e78200;
 }
 
 #jumbotron {
@@ -67,40 +71,50 @@ body {
 }
 .container {
   font-family: 'Comfortaa', cursive;
+  /* display: inline; */
   /* background-color: #6c757d; */
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19); */
   /* opacity: 0.8; */
 }
 
 #forecast {
   /* background-color: #6c757d; */
   /* opacity: 0.5; */
-  width: 250px;
-  height: 30px;
+  /* width: 250px;
+  height: 30px; */
+  
   align-content: center;
   text-shadow: 1px;
   /* margin-right: 150px; */
 }
 
 #profile-card {
-  margin-left: 150px;
+  /* margin-left: 150px; */
   text-align: center;
 }
 
 #events-card {
   padding-top: 20px;
-  margin-left: 150px;
-  margin-right: 150px;
+  /* margin-left: 150px;
+  margin-right: 150px; */
   text-align: center;
 }
 
 .clickable:hover {
-  background-color: rgba(0, 255, 157, 0.562);
+  background-color: #e78200;
   cursor: pointer;
 }
 
-#card #image{
-  width:50%;
-  margin-left: auto;
-  margin-right: auto;
+.eventCard {
+  align-items: center;
+  text-align: center;
+}
+
+#comment-display {
+  background-color: white;
+  opacity: 0.8;
+}
+
+.comments {
+  color: #f8f9fa;
 }

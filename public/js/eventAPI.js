@@ -152,6 +152,7 @@ $("#event").on("click", "div", function() {
     sessionStorage.setItem("start_time", result.start_time);
     sessionStorage.setItem("venue_name", result.venue_name);
     sessionStorage.setItem("image", result.images.image[0].medium.url);
+    sessionStorage.setItem("id", result.id);
 
     location.replace("/event");
 

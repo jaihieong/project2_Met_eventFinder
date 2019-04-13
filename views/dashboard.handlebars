@@ -1,11 +1,30 @@
 <br>
 <br>
-{{!-- <div class="container"> --}}
+<div class="container">
     <div class="row">
-        {{!-- <div class="col-2"></div> --}}
-        <div class="col-6">
-            {{!-- <h3>Hello {{name}}</h3> --}}
-            <div class="card" style="width: 18rem;" id="profile-card">
+        
+        <div class="col-8">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="./styles/images/went.png" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Welcome!</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                                content. This content is a little bit longer.</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Saved Events</li>
+                                <li class="list-group-item">Events Going</li>
+                                <li class="list-group-item">Messages</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {{!-- <div class="card" style="width: 18rem;" id="profile-card">
                 <img src="./styles/images/went.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" id="test-name">Name</h5>
@@ -22,32 +41,34 @@
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                 </div>
-            </div>
+            </div> --}}
+            
+            
         </div>
-        
-        <div class="col-6">
-            {{!-- <h3>Today's forecast</h3> --}}
-            {{!-- <div class="card" style="width: 16rem;"> --}}
-                <div class="card-body">
-                    <div class="col 6" id="forecast"></div>
+        <span>
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <div id="forecast"></div>
+                    </div>
                 </div>
-            {{!-- </div> --}}
-        </div>
+            </div>
+        </span>
     </div>
-    <br>
-    <hr>
-    <br>
-    {{!-- <div class="container">  --}}
+</div>    
+<br>
+<hr>
+<br>
+    <div class="container"> 
         <div class="row">
-            {{!-- <div class="col-2"></div> --}}
+            
             <div class="col-12">
                 <div class="card" id="events-card">
-                    <!-- <div class="col 6" id="forecast"></div> -->
+                    
                     <div id="event"></div>
                     <div id="event-detail"></div>
                 </div>
             </div>
         </div>
         <br>
-    {{!-- </div>     --}}
-    {{!-- </div>     --}}
+    </div>  

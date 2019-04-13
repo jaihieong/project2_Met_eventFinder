@@ -1,6 +1,11 @@
 console.log("script.js linked");
 
 console.log("script.js file is connected");
+$("#logout-btn").on("click", function(event) {
+  console.log("logout btn clicked");
+  location.replace("/login");
+});
+
 $(function () {
   //Submit button clicked in register form
   $(".submitButton").on("click", function (event) {

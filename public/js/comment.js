@@ -1,7 +1,9 @@
 console.log("comment.js linked");
+console.log(sessionStorage.getItem("id"));
 
 $("#comment-submit").on("click", function(event) {
     event.preventDefault();
+    console.log(sessionStorage.getItem("id"));
 
     var newComment = {
         author: $("#author").val().trim(),
